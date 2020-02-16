@@ -18,8 +18,8 @@ app.engine('handlebars', exphbs({
 app.set('view engine', 'handlebars')
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/Articles";
-mongoose.connect(MONGODB_URI);
-// mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
+// mongoose.connect(MONGODB_URI);
+mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 app.get("/", (req, res) => {
     db.article.find({} )
