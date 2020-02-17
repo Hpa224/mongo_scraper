@@ -67,7 +67,7 @@ app.get("/scrape", function(req, res) {
 
             db.article.create(result)
             .then(function(dbArticle) {
-                console.log(dbArticle);
+                // console.log(dbArticle);
                 })
             .catch(function(err) {
                 console.log(err);
@@ -80,10 +80,10 @@ app.get("/scrape", function(req, res) {
 app.get("/articles/:id", function(req, res) {
 
     db.article.findOne({ _id: req.params.id })
-    // .populate("note")
+    .populate("note")
     .lean()
     .then(function(dbArticle) {
-        console.log(dbArticle)
+        // console.log(dbArticle)
         res.json(dbArticle);
         })
     .catch(function(err) {
@@ -93,8 +93,9 @@ app.get("/articles/:id", function(req, res) {
 
 app.post("/articles/:id", function(req, res) {
     db.note.create(req.body)
+    console.log(req.params.id)
     .then(function(dbNote) {
-        return db.Article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id }, { new: true });
+        return db.article.findOneAndUpdate({ _id: req.params.id }, { note: dbNote._id },{ new: true });
     })
     .then(function(dbArticle) {
         res.json(dbArticle);

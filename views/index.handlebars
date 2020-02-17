@@ -3,11 +3,13 @@
     {{#each article}}
       <li id="{{_id}}" class="articles">{{title}}</li>
       {{!-- <li>{{summary}}</li> --}}
-      <li>{{link}}</li><br>
+      <li>{{link}}</li>
+      <div id="uniqueid{{_id}}">
+        <input class="addnote" type="button" value="Add note" id="{{_id}}">
+        <input class="previousnote" type="button" value="Previous note" id="{{_id}}">
+      </div>  <br> <br>
     {{/each}}
   </ul>   
 </div>
-
-<div id="notes">
 </div>
 

@@ -3,7 +3,7 @@ let Schema = mongoose.Schema;
 
 let schema = new Schema({
   title: String,
-  body: String
+  body: String,
   });
 
 let note = mongoose.model("note", schema);
